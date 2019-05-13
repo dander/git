@@ -1185,7 +1185,7 @@ class LargeFileSystem(object):
         """Processes the content of git fast import. This method decides if a
            file is stored in the large file system and handles all necessary
            steps."""
-        if self.exceedsLargeFileThreshold(relPath, contents) or self.hasLargeFileExtension(relPath):
+        if self.hasLargeFileExtension(relPath) or self.exceedsLargeFileThreshold(relPath, contents):
             contentTempFile = self.generateTempFile(contents)
             (pointer_git_mode, contents, localLargeFile) = self.generatePointer(contentTempFile)
             if pointer_git_mode:
