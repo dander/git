@@ -1166,6 +1166,7 @@ class LargeFileSystem(object):
             zf.close()
             compressedContentsSize = zf.infolist()[0].compress_size
             os.remove(contentTempFile)
+            compressedContentFile.close()
             os.remove(compressedContentFile.name)
             if compressedContentsSize > gitConfigInt('git-p4.largeFileCompressedThreshold'):
                 return True
