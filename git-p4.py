@@ -3872,7 +3872,7 @@ class P4Clone(P4Sync):
         depotDir = re.sub("(#[^#]*)$", "", depotDir)
         depotDir = re.sub(r"\.\.\.$", "", depotDir)
         depotDir = re.sub(r"/$", "", depotDir)
-        return os.path.split(depotDir)[1]
+        return filter(None, os.path.normpath(depotDir).split(os.sep))[1]
 
     def run(self, args):
         if len(args) < 1:
